@@ -101,11 +101,11 @@ const App = () => {
       {
         ((winner=='X'&&!player1bot)||(winner=='O'&&!player2bot))&&<ConfettiAnimation/>
       }
-      <div className="flex justify-between lg:absolute lg:w-screen ">
+      <div className="flex justify-between lg:absolute lg:w-screen pointer-events-none">
         <PlayerBotIcon type={player1bot ? "bot" : "player"} isTurn={turn === "X"} />
         <PlayerBotIcon type={player2bot ? "bot" : "player"} isTurn={turn === "O"} />
       </div>
-      <div className="flex">
+      <div className="pointer-events-auto">
         <Board
           board={board}
           setBoard={setBoard}

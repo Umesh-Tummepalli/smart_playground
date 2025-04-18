@@ -21,7 +21,6 @@ Minimax is a decision-making algorithm used in two-player games like Tic-Tac-Toe
 
 ## 📦 How to Run
 
-### If it's a web project:
 1. Clone the repo  
    ```bash
    git clone https://github.com/Umesh-Tummepalli/smart_tic-tac-toe.git
@@ -31,3 +30,11 @@ Minimax is a decision-making algorithm used in two-player games like Tic-Tac-Toe
 3. Run the Project  
    ```bash
    npm run dev
+
+
+## Preview
+![alt text](image-1.png)
+
+
+
+![alt text](image.png)

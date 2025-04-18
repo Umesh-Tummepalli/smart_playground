@@ -2,8 +2,13 @@ import React from 'react';
 
 const WinXSym = () => {
   return (
-    <div className="relative ">
-      <svg width="100" height="100" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <div className="relative w-full h-full">  {/* Make container fill parent */}
+      <svg 
+        viewBox="0 0 200 200"  // Keep your original coordinate system
+        preserveAspectRatio="xMidYMid meet"  // Maintain aspect ratio
+        style={{ width: '100%', height: '100%' }}  // Scale to parent
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
           <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#FFD700" />
@@ -35,7 +40,6 @@ const WinXSym = () => {
         
         {/* X symbol with bounce animation */}
         <g style={{ transformOrigin: 'center' }}>
-          {/* First diagonal line */}
           <path 
             d="M60 60 L140 140" 
             stroke="white" 
@@ -47,8 +51,6 @@ const WinXSym = () => {
               filter: 'url(#glow)'
             }}
           />
-          
-          {/* Second diagonal line */}
           <path 
             d="M140 60 L60 140" 
             stroke="white" 
@@ -63,7 +65,7 @@ const WinXSym = () => {
         </g>
         
         {/* CSS animations */}
-        <style jsx>{`
+        <style>{`
           @keyframes bounceIn {
             0% { 
               opacity: 0;
@@ -108,4 +110,4 @@ const WinXSym = () => {
   );
 };
 
-export default WinXSym; 
+export default WinXSym;

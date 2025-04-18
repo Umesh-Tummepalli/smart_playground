@@ -4,6 +4,7 @@ import PlayerBotIcon from "./components/PlayerBotIcon";
 import WinnerAnnouncement from "./Winner";
 import { minimax } from "./app/minimax.js";
 import { boardFilled } from "./app/minimax.js";
+import ConfettiAnimation from "./components/ConfettiAnimation";
 
 const App = () => {
   const getInitialBoard = () => [
@@ -81,7 +82,14 @@ const App = () => {
       const makeBotMove = async () => {
           const boardCopy = board.map(row => [...row]);
           const bestMove = await minimax(boardCopy, turn);
+        if(player1bot && player2bot){
+          setTimeout(()=>{
+            setBoard(bestMove);
+          },1000);
+        }
+        else{
           setBoard(bestMove);
+        }
       };
       makeBotMove();
     }
@@ -90,8 +98,14 @@ const App = () => {
   return (
     <div className="text-white">
       <WinnerAnnouncement winner={winner} />
-      <div className="flex">
+      {
+        ((winner=='X'&&!player1bot)||(winner=='O'&&!player2bot))&&<ConfettiAnimation/>
+      }
+      <div className="flex justify-between lg:absolute lg:w-screen ">
         <PlayerBotIcon type={player1bot ? "bot" : "player"} isTurn={turn === "X"} />
+        <PlayerBotIcon type={player2bot ? "bot" : "player"} isTurn={turn === "O"} />
+      </div>
+      <div className="flex">
         <Board
           board={board}
           setBoard={setBoard}
@@ -101,16 +115,15 @@ const App = () => {
           setWinner={setWinner}
           winPoints={winPoints}
         />
-        <PlayerBotIcon type={player2bot ? "bot" : "player"} isTurn={turn === "O"} />
       </div>
-      <div className="mt-10 flex flex-col items-center space-y-4">
+      <div className="sm:mt-10 flex flex-col items-center space-y-4 ">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded shadow-md transition-all px-4 py-2"
           onClick={resetGame}
         >
           Reset
         </button>
-        <div className="flex items-center space-x-3 text-lg font-semibold">
+        <div className="flex items-center text-lg font-semibold ">
           <button
             className="bg-[#0092b0] hover:bg-green-700 text-white font-bold rounded shadow-md px-4 py-2 transition-all"
             onClick={() => {

@@ -57,6 +57,7 @@ const Board = (props) => {
                 getSymbol(tile)
               }
             </span>
+            
           </div>
         )),
       )}

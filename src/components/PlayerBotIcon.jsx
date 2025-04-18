@@ -2,7 +2,7 @@ import React from "react";
 
 const PlayerBotIcon = ({ type, isTurn = false }) => {
   return (
-    <div className="w-32 h-32 flex items-center justify-center relative m-10 scale-150">
+    <div className="sm:w-32 sm:h-32 flex items-center justify-center relative lg:mx-30 lg:translate-y-28 lg:scale-125 mx-auto w-20 h-20 mt-5 sm:mt-0">
       {/* Turn indicator ring */}
       {isTurn && (
         <div className="absolute inset-0 rounded-full border-4 border-green-400 animate-pulse" />

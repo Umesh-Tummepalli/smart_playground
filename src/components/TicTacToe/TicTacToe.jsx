@@ -73,7 +73,7 @@ const TicTacToe = () => {
   }, [board]);
   
   // Handle bot moves
-  let timeout;
+  let timeout;  
   function delayedUpdate(bestMove){
     timeout=setTimeout(()=>{
       setBoard(bestMove);

@@ -62,7 +62,7 @@ npm run dev
 
 **Sudoku Game:** ![alt text](image-5.png)
 
-## ✨ Future Enhancements (Optional)
+## ✨ Future Enhancements
 
 * Timer and Hint system for Sudoku.
 * Dark/Light Theme switcher.

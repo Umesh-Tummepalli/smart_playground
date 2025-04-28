@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Outlet, NavLink, useLocation,Link } from "react-router-dom"
 import LandingPage from "./LandingPage"
-
+import logo from "../app/vite.svg"
 const NavBar = () => {
   const [visible, setVisible] = useState(false)
   const [expandSudoku, setExpandSudoku] = useState(false)
@@ -53,12 +53,15 @@ const NavBar = () => {
           ${visible ? "translate-x-0 shadow-lg shadow-black/20" : "-translate-x-full"}
           z-10 border-r border-[#2c3f4c]`}
       >
-        <div className="flex items-center justify-between mb-8 border-b border-[#2c3f4c] pb-4">
+        <div className="flex items-center justify-between mb-8 border-b border-[#2c3f4c] pb-4 ">
           <Link
+          className="flex gap-2"
           to="/"
           >
+            <img src={logo} width="35" alt="XO" className="inline"/>
           <h2 className="text-xl font-semibold text-[#00d3f1]"
-          >Game Center</h2>
+          >
+            Smart Playground</h2>
           </Link>
           <button className="text-white/70 hover:text-white transition-colors p-1" onClick={() => setVisible(false)}>
             <i className="ri-close-line text-xl"></i>

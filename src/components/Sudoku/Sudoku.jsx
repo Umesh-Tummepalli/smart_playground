@@ -19,6 +19,9 @@ export const emptyBoard=[
     ["","","","","","","","",""],
   ]
 const Sudoku = () => {
+  useEffect(()=>{
+      document.title='Sudoku -Smart Playground';
+    })
   //states
   const [winner, setwinner] = useState(false)
   const [selectedCell, setselectedCell] = useState([0, 0]);

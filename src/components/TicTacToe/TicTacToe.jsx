@@ -101,6 +101,9 @@ const TicTacToe = () => {
       makeBotMove();
     }
   }, [turn,player1bot,player2bot,winner]);
+  useEffect(()=>{
+    document.title='Tic-Tac-Toe - Smart Playground';
+  })
 
   return (
     <div className="text-white">

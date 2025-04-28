@@ -102,9 +102,10 @@ const Sudoku = () => {
     setboard(temp);
   },[initialState])
   return (
-    <div className={`text-white text-center`}>
+    <div className={`text-white text-center flex flex-col justify-center items-center`}>
       {winner && <ConfettiAnimation/>}
       <SudokuHeader winner={winner}/>
+      <div className="capitalize text-[#00d3f1]">{difficulty} : Level {level}</div>
       <SudokuBoard
         board={board}
         onCellClick={handleBoardClick}

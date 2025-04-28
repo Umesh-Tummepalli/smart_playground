@@ -130,7 +130,10 @@ const TicTacToe = () => {
         >
           Reset
         </button>
-        <div className="flex items-center text-lg font-semibold ">
+        <div className="flex items-center text-lg font-semibold gap-4">  
+          <span className="text-[10px] w-[50px] text-[#6b7078] scale-125">
+            Click here to change mode {'->'}
+          </span>
           <button
             className="bg-[#0092b0] hover:bg-green-700 text-white font-bold rounded shadow-md px-4 py-2 transition-all"
             onClick={() => {
@@ -140,7 +143,7 @@ const TicTacToe = () => {
           >
             {player1bot ? "Bot" : "Player"}
           </button>
-          <span className="text-gray-700">vs</span>
+          <span className="text-[#6b7078]">vs</span>
           <button
             className="bg-[#d94600] hover:bg-red-700 text-white font-bold px-4 py-2 rounded shadow-md transition-all"
             onClick={() => {
@@ -150,6 +153,9 @@ const TicTacToe = () => {
           >
             {player2bot ? "Bot" : "Player"}
           </button>
+          <span className="text-[10px] w-[50px] text-[#6b7078] scale-125">
+            {'<-'}Click here to change mode
+          </span>
         </div>
       </div>
     </div>

@@ -51,3 +51,35 @@ nav::-webkit-scrollbar {
     opacity: 0;
   }
 }
+
+
+/* Slide-down animation */
+@keyframes slideDown {
+  0% {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+
+/* Slide-down animation */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+
+
+.sudoku-alert-show {
+  animation: slideDown 0.3s ease-out forwards;
+}

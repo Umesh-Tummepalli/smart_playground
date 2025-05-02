@@ -7,6 +7,7 @@ import SudokuHeader from "./SudokuHeader";
 import {useParams,useNavigate,useSearchParams} from "react-router"
 import { sudoku_data } from "../../app/SusokuDataSet";
 import ViewSolution from "./ViewSolution";
+import InitialValueChangeError from "./InitialValueChangeError";
 export const emptyBoard=[
     ["","","","","","","","",""],
     ["","","","","","","","",""],
@@ -22,6 +23,8 @@ const Sudoku = () => {
   useEffect(()=>{
       document.title='Sudoku -Smart Playground';
     })
+    //alert alert state
+  const [alert,setAlert]=useState(false);    
   //states
   const [winner, setwinner] = useState(false)
   const [selectedCell, setselectedCell] = useState([0, 0]);
@@ -37,17 +40,31 @@ const Sudoku = () => {
   const [board, setboard] = useState(emptyBoard);
   function upDateBoard(row, col, data) {
     if(initialState[row][col]){
+      setAlert(true);
       return;
     }
     let currBoard = [...board];
     currBoard[row][col] = data;
     setboard(currBoard);
   }
-  function handleBoardClick(row, col) {
-    if(initialState[row][col]){
-      return;
+  useEffect(()=>{
+    let timeout;
+    if(alert){
+      timeout=setTimeout(()=>{
+        setAlert(false);
+      },1000);
     }
+      return(()=>{
+      if(timeout){
+        clearTimeout(timeout);
+      }
+    })
+  },[alert])
+  function handleBoardClick(row, col) {
     if (selectedCell.toString() == [row, col].toString()) {
+      if(initialState[row][col]){
+        return;
+      }
       upDateBoard(row, col, "");
     } else {
       setselectedCell([row, col]);
@@ -146,6 +163,9 @@ const Sudoku = () => {
       ><i className="ri-arrow-right-s-line"></i></button>
 
       </div>
+      {
+        alert&&<InitialValueChangeError/>
+      }
       {/* <ViewSolution board={initialState || emptyBoard}/> */}
     </div>
   );

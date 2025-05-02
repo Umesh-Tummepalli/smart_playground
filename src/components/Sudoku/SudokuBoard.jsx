@@ -27,13 +27,14 @@ function SudokuBoard({ board, onCellClick, selectedCell, invalid, winner }) {
             
             // Determine if this is the selected cell
             const isSelected = selectedCell[0] === rowIndex && selectedCell[1] === colIndex;
-            
+            const isSameVal = cell!=='' && cell === board[selectedCell[0]][selectedCell[1]];
             // Determine if this is the invalid cell - Fixed the problem here
             const isInvalidCell = invalid.inValidCell && 
               includes2D(invalid.inValidCell, [rowIndex, colIndex]);
             
             // Determine if this cell is in an invalid row or column
             const isInInvalidRowOrCol = invalid.inValidRow === rowIndex || invalid.inValidCol === colIndex;
+            const isSlectedRowOrCol=selectedCell[0]===rowIndex || selectedCell[1]===colIndex;
             
             return (
               <button
@@ -47,6 +48,8 @@ function SudokuBoard({ board, onCellClick, selectedCell, invalid, winner }) {
                   ${rowIndex % 3 === 2 && rowIndex !== 8 ? "border-b-2 border-b-[#d1d1d1]" : ""}
                   ${colIndex % 3 === 2 && colIndex !== 8 ? "border-r-2 border-r-[#d1d1d1]" : ""}
                   ${isSelected ? "ring-2 ring-cyan-400 ring-opacity-80 shadow-inner shadow-cyan-900 " : ""}
+                  ${isSameVal&&"ring-2 ring-[#facc15]"}
+                  ${isSlectedRowOrCol&&"shadow-[0_0_20px_rgba(250,204,21,0.5)]  <!-- yellow-400 -->"}
                   ${
                     isInvalidCell
                       ? "bg-[#DC143C] animate-pulse"

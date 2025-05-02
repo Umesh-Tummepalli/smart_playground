@@ -128,6 +128,7 @@ const NavBar = () => {
 
         <div className="mt-auto pt-6 border-t border-[#2c3f4c] text-xs text-white/50 text-center">
           <p>Game Center v1.0</p>
+          <a href="https://www.linkedin.com/in/umesh-tummepalli-924362333/" target="_blank">Meet the developer</a>
         </div>
       </nav>
 

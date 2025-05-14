@@ -1,27 +1,36 @@
 function winner(board) {
-  const winningPositions = [
-      // Rows
-      [[0, 0], [0, 1], [0, 2]],
-      [[1, 0], [1, 1], [1, 2]],
-      [[2, 0], [2, 1], [2, 2]],
-      // Columns
-      [[0, 0], [1, 0], [2, 0]],
-      [[0, 1], [1, 1], [2, 1]],
-      [[0, 2], [1, 2], [2, 2]],
-      // Diagonals
-      [[0, 0], [1, 1], [2, 2]],
-      [[0, 2], [1, 1], [2, 0]]
-  ];
+  const n = board.length;
 
-  for (let i = 0; i < winningPositions.length; i++) {
-      const [p1, p2, p3] = winningPositions[i];
-      if (board[p1[0]][p1[1]] === 'X' && board[p2[0]][p2[1]] === 'X' && board[p3[0]][p3[1]] === 'X') {
-          return 'X';
+  // Check rows and columns
+  for (let i = 0; i < n; i++) {
+      let rowSet = new Set();
+      let colSet = new Set();
+      for (let j = 0; j < n; j++) {
+          rowSet.add(board[i][j]);
+          colSet.add(board[j][i]);
       }
-      if (board[p1[0]][p1[1]] === 'O' && board[p2[0]][p2[1]] === 'O' && board[p3[0]][p3[1]] === 'O') {
-          return 'O';
-      }
+      if (rowSet.size === 1 && rowSet.has('X')) return 'X';
+      if (rowSet.size === 1 && rowSet.has('O')) return 'O';
+      if (colSet.size === 1 && colSet.has('X')) return 'X';
+      if (colSet.size === 1 && colSet.has('O')) return 'O';
   }
+
+  // Check main diagonal
+  let mainDiagSet = new Set();
+  for (let i = 0; i < n; i++) {
+      mainDiagSet.add(board[i][i]);
+  }
+  if (mainDiagSet.size === 1 && mainDiagSet.has('X')) return 'X';
+  if (mainDiagSet.size === 1 && mainDiagSet.has('O')) return 'O';
+
+  // Check anti-diagonal
+  let antiDiagSet = new Set();
+  for (let i = 0; i < n; i++) {
+      antiDiagSet.add(board[i][n - 1 - i]);
+  }
+  if (antiDiagSet.size === 1 && antiDiagSet.has('X')) return 'X';
+  if (antiDiagSet.size === 1 && antiDiagSet.has('O')) return 'O';
+
   return '.';
 }
 
@@ -48,8 +57,8 @@ function minimaxHelper(board, isMax, currVal, needVal) {
   }
 
   let val = isMax ? -Infinity : Infinity;
-  for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
+  for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board.length; j++) {
           if (board[i][j] === '.') {
               board[i][j] = currVal;
               const store = minimaxHelper(board, !isMax, currVal === 'X' ? 'O' : 'X', needVal);
@@ -70,8 +79,8 @@ function minimax(board, val) {
     let place = [-1, -1]; // Default invalid move
     let score = -Infinity;
 
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board.length; j++) {
         if (board[i][j] === '.') {
           board[i][j] = val; // Make the move
           const tempScore = minimaxHelper(board, false, val === 'X' ? 'O' : 'X', val); // Opponent minimizes

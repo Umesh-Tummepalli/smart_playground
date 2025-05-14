@@ -34,7 +34,7 @@ function SudokuBoard({ board, onCellClick, selectedCell, invalid, winner }) {
             
             // Determine if this cell is in an invalid row or column
             const isInInvalidRowOrCol = invalid.inValidRow === rowIndex || invalid.inValidCol === colIndex;
-            const isSlectedRowOrCol=selectedCell[0]===rowIndex || selectedCell[1]===colIndex;
+            const isSlectedRowOrColorBlock=selectedCell[0]===rowIndex || selectedCell[1]===colIndex || (Math.floor(selectedCell[0]/3)===Math.floor(rowIndex/3) && Math.floor(selectedCell[1]/3)===Math.floor(colIndex/3));  
             
             return (
               <button
@@ -49,7 +49,7 @@ function SudokuBoard({ board, onCellClick, selectedCell, invalid, winner }) {
                   ${colIndex % 3 === 2 && colIndex !== 8 ? "border-r-2 border-r-[#d1d1d1]" : ""}
                   ${isSelected ? "ring-2 ring-cyan-400 ring-opacity-80 shadow-inner shadow-cyan-900 " : ""}
                   ${isSameVal&&"ring-2 ring-[#facc15]"}
-                  ${isSlectedRowOrCol&&"shadow-[0_0_20px_rgba(250,204,21,0.5)]  <!-- yellow-400 -->"}
+                  ${isSlectedRowOrColorBlock&&"shadow-[0_0_25px_rgba(250,204,21,0.5)]  <!-- yellow-400 -->"}
                   ${
                     isInvalidCell
                       ? "bg-[#DC143C] animate-pulse"

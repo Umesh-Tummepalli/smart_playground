@@ -52,7 +52,7 @@ const Sudoku = () => {
     if(alert){
       timeout=setTimeout(()=>{
         setAlert(false);
-      },1000);
+      },3000);
     }
       return(()=>{
       if(timeout){

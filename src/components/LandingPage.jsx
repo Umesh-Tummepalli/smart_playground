@@ -271,19 +271,13 @@ export default function LandingPage() {
               <p className="text-white/60 text-sm">Challenge your mind with classic games</p>
             </div>
             <div className="flex space-x-6">
-              <a href="#" className="text-white/60 hover:text-[#00d3f1] transition-colors">
+              <a href="https://github.com/Umesh-Tummepalli/smart_playground.git" target="_blank" className="text-white/60 hover:text-[#00d3f1] transition-colors">
                 <i className="ri-github-fill text-xl"></i>
               </a>
-              <a href="#" className="text-white/60 hover:text-[#00d3f1] transition-colors">
-                <i className="ri-twitter-fill text-xl"></i>
-              </a>
-              <a href="#" className="text-white/60 hover:text-[#00d3f1] transition-colors">
+              <a href="https://www.linkedin.com/in/umesh-tummepalli-924362333/" target="_blank" className="text-white/60 hover:text-[#00d3f1] transition-colors">
                 <i className="ri-linkedin-fill text-xl"></i>
               </a>
             </div>
-          </div>
-          <div className="mt-8 pt-6 border-t border-[#1e2e38] text-center text-white/40 text-sm">
-            <p>© {new Date().getFullYear()} Game Center. All rights reserved.</p>
           </div>
         </div>
       </footer>
